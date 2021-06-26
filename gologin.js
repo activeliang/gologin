@@ -597,6 +597,9 @@ class GoLogin {
         `--window-position=${winPos.x},${winPos.y}`,
         `--gologin-profile=${profile_name}`, 
         `--lang=${browserLang || 'en'}`,
+        '--disable-background-networking',
+        '--enable-features=NetworkService,NetworkServiceInProcess',
+        '--disable-dev-shm-usage'
       ];
 
       if (proxy) {
