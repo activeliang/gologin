@@ -550,6 +550,11 @@ class GoLogin {
     return params;
   }
 
+  rand(min, max) {
+    const d = Math.random() * (max - min) + min;
+    Math.floor(d)
+  }
+
   async spawnBrowser() {
     const remote_debugging_port = await this.getRandomPort();
     this.remote_debugging_port = remote_debugging_port;
@@ -566,6 +571,8 @@ class GoLogin {
     this.port = remote_debugging_port;
     
     const ORBITA_BROWSER = this.executablePath || this.browserChecker.getOrbitaPath;
+
+    const winPos = { x: this.rand(0, 20), y: this.rand(0, 50)}
 
     const env = {};
     Object.keys(process.env).forEach((key) => {
@@ -587,6 +594,7 @@ class GoLogin {
         `--user-data-dir=${profile_path}`, 
         `--password-store=basic`, 
         `--tz=${tz}`, 
+        `--window-position=${winPos.x},${winPos.y}`,
         `--gologin-profile=${profile_name}`, 
         `--lang=${browserLang || 'en'}`,
       ];
