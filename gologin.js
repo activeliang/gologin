@@ -552,7 +552,7 @@ class GoLogin {
 
   rand(min, max) {
     const d = Math.random() * (max - min) + min;
-    Math.floor(d)
+    return Math.floor(d)
   }
 
   async spawnBrowser() {
