@@ -466,10 +466,10 @@ class GoLogin {
       }
 
       const proxyUrl = `${proxy.mode}://${proxy.username}:${proxy.password}@${proxy.host}:${proxy.port}`;
-      debug('getTimeZone start https://time.gologin.com', proxyUrl);
-      data = await requests.get('https://time.gologin.com', { proxy: proxyUrl });
+      debug('getTimeZone start http://39.108.121.230:3000?ip=*', proxyUrl);
+      data = await requests.get('http://39.108.121.230:3000?ip=' + proxy.host, { proxy: proxyUrl });
     } else {
-      data = await requests.get('https://time.gologin.com');
+      data = await requests.get('http://39.108.121.230:3000?ip=');
     }
     debug('getTimeZone finish', data.body);
     this._tz = JSON.parse(data.body);
